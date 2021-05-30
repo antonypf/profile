@@ -1,0 +1,11 @@
+body {
+    background-color: powderblue;
+  }
+.line{
+    font-size: 35px;
+    
+}
+.animated_text{
+    font-weight: 600;
+    color: brown;
+}
