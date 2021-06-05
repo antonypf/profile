@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Just created</title>
+<link rel="stylesheet" href="custom.css">
+</head>
+<body>
+<div class="line">
+    <span class="non_animated_text"> Hello I am </span> 
+    <span class="animated_text">
+    </span>
+</div>
+</body>
+<script>
+    
+    function write(text, onCompletion){
+        let currentIndex = 0;
+        function loop(){
+            const animatedText = document.querySelector(".animated_text");
+        animatedText.innerHTML = text.substring(0,currentIndex);
+        if(currentIndex === text.length+1){
+            onCompletion();
+            return;
+        }
+        currentIndex++;
+        setTimeout(loop,200);
+        }
+        loop();
+    }
+    function erase(text, onCompletion){
+        let currentIndex = text.length -1;
+        function loop(){
+            const animatedText = document.querySelector(".animated_text");
+        animatedText.innerHTML = text.substring(0,currentIndex);
+        if(currentIndex === 0){
+            onCompletion();
+            return;
+        }
+        currentIndex--;
+        setTimeout(loop,200);
+        }
+        loop();
+    }
+    function onLoad(){
+        let text = ["ANTONY","a programmer"];
+        write(text[0],() =>{
+            erase(text[0],()=>{
+                write(text[1],()=>{
+                    erase(text[1],()=>{
+                    onLoad();
+                    });
+                });
+            });
+        });
+    }
+    window.addEventListener("load", onLoad);
+</script>
+</html>
